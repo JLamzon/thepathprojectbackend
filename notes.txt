@@ -1,0 +1,94 @@
+// Goals for Blog Api
+1. Create an Api for the front end of our blog. This Api must handle all of our CRUD functions.
+In this app, the user should be able to login, create an account, Home Page (See all publish blog items) Profile page (edit user's blog item, delete a blog item, add a blog item)
+//Code Base Structure
+1. Controllers, we will need a user controller, and a blog controller.
+   Controllers/Folder
+       UserController // File
+            Login // EndPoint
+            CreateUser // EndPoint
+            UpdateUser // EndPoint
+            DeleteUser // EndPoint
+       BlogController // File
+          Create Blog Item // EndPoint
+          Get All Blog Items // EndPoint
+          Update the Blog Item // EndPoint
+          Delete Blog Item // EndPoint
+          Get Blog Items by Friend (Name?)
+          Get Blog Items by Academy (Name?)
+	   
+	EventController // File
+          Create Event Item // EndPoint
+          Get All Event Items // EndPoint
+          Update the Event Item // EndPoint
+          Delete Event Item // EndPoint
+	    Get Event Items by Friend (Name?)
+          Get Event Items by Academy (Name?)
+//Services
+    Services // Folder
+          Context // Folder  *This will be our data base stuff*
+              DataContext // File
+              UserService // File
+                      GetUserByUserName // Function (For log in purposes)
+                      Login // Function
+                      CreateUser // Function
+                      UpdateUser // Function
+                      DeleteUser // Function
+			   
+              BlogService // File
+                Create Blog Item // Function
+                Get All Blog Items // Function
+                Update the Blog Item // Function
+                Delete Blog Item // Function
+		  EventService // File
+		    Create Event Item // Function
+        	    Get All Event Items // Function
+        	    Update the Event Item // Function
+        	    Delete Event Item // Function
+              PasswordService // File
+                    Hash PassWord
+                    Verify Hash PasswordDTO
+        -----------v Items Below is saved to DB v-------------------
+//Models
+     Models // Folder
+        UserModel // File
+           Int ID
+           String UserName
+           String Salt
+           String Hash
+           (Salt Hash Is an encrypted Password)
+        BlogItemModel // File
+            int ID
+            int UserID
+            string PublishedName
+            string Date
+            string Title
+            string Description
+            bool isPublished
+            bool isDeleted (Soft Delete. acts like its deleted but its not. its still in the database. just incase we need it back)
+	EventItemModel // File
+            int ID
+            int UserID
+		string AcademyName
+            string PublishedName
+            string Date
+		string Time
+            string Title
+            string Description
+		bool Public
+            bool isPublished
+            bool isDeleted (Soft Delete. acts like its deleted but its not. its still in the database. just incase we need it back)
+        -----------^ Items Above is saved to DB ^-------------------
+        DTOs // Folder
+            LoginDTO // DTO File
+                string UserName
+                string Password
+            CreateAccountDTO // File
+                string UserName
+                string Password
+                int ID = 0
+            PasswordDTO // File
+                string Salt
+                string Hash
+Admin: AcademyBlogAdmin
+Password: AcademyBlogPassword!
